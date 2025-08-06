@@ -1,0 +1,48 @@
+# DS623 PE04 - Gram-Schmidt Process in R2
+# Topic: Orthonormal Basis via Gram-Schmidt
+# Author: Verónica Elze
+# OpenAI. (2025). ChatGPT’s assistance with orthonormal basis derivation [Large language model]. https://openai.com/chatgpt
+
+import numpy as np
+
+# 🎯 Task 1: Input two independent non-zero vectors in R2
+v1 = np.array([2, 1])
+v2 = np.array([-3, 0])
+
+# 🎯 Task 2: Apply Gram-Schmidt Process
+# Step 1: Normalize v1 to get w1
+w1 = v1 / np.linalg.norm(v1)
+
+# Step 2: Project v2 onto w1 and subtract to make orthogonal
+proj = np.dot(v2, w1) * w1
+u2 = v2 - proj
+w2 = u2 / np.linalg.norm(u2)
+
+# 🎯 Task 3: Verification
+length_w1 = np.linalg.norm(w1)
+length_w2 = np.linalg.norm(w2)
+dot_product = np.dot(w1, w2)
+
+# 🎯 Task 4: Print output with 3 decimal precision
+np.set_printoptions(precision=3, suppress=True)
+print("Two orthonormal bases are found below.")
+print("w1 -", w1)
+print("w2 -", w2)
+print("\nVerification:")
+print(f"Length of w1 is {length_w1:.3f}")
+print(f"Length of w2 is {length_w2:.3f}")
+print(f"Dot product is {dot_product:.3f}")
+
+# End of file
+# Reference: OpenAI. (2025). ChatGPT’s assistance with orthonormal basis derivation [Large language model]. https://openai.com/chatgpt
+
+
+# EXPECTED OUTPUT
+Two orthonormal bases are found below.
+w1 - [ 0.894  0.447]
+w2 - [-0.447  0.894]
+
+Verification:
+Length of w1 is 1.000
+Length of w2 is 1.000
+Dot product is 0.000
